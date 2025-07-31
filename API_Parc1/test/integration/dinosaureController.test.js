@@ -67,8 +67,6 @@ describe('Dinosaure API integration tests', () => {
     await request(app)
       .delete(`/api/dinosaures/${createdDinosaureId}`)
       .expect(204);
-
-    // Vérifier que la ressource n'existe plus
     await request(app)
       .get(`/api/dinosaures/${createdDinosaureId}`)
       .expect(404);
