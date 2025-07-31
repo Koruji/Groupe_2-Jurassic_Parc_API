@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  api1:
+    build: ./api1
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=mysql1
+      - DB_PORT=3306
+      - DB_NAME=jurassic_park
+      - DB_USER=root
+      - DB_PASSWORD=password
+    depends_on:
+      mysql1:
+        condition: service_healthy
+    volumes:
+      - ./api1:/app
+      - /app/node_modules
+    restart: on-failure
+
+  mysql1:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=jurassic_park
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data1:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+      start_period: 40s
+
+  api2:
+    build: ./api2
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=mysql2
+      - DB_PORT=3306
+      - DB_NAME=jurassic_park_2
+      - DB_USER=root
+      - DB_PASSWORD=password
+    depends_on:
+      mysql2:
+        condition: service_healthy
+    volumes:
+      - ./api2:/app
+      - /app/node_modules
+    restart: on-failure
+
+  mysql2:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=jurassic_park_2
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data2:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
+      tim
