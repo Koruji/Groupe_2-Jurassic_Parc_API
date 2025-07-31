@@ -1,32 +1,32 @@
 version: '3.8'
 
 services:
-  api:
+  api1:
     build: .
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - NODE_ENV=development
-      - DB_HOST=mysql
+      - DB_HOST=mysql1
       - DB_PORT=3306
       - DB_NAME=jurassic_park
       - DB_USER=root
       - DB_PASSWORD=password
     depends_on:
-      mysql:
+      mysql1:
         condition: service_healthy
     volumes:
       - .:/app
       - /app/node_modules
     restart: on-failure
 
-  mysql:
+  mysql1:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=jurassic_park
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
