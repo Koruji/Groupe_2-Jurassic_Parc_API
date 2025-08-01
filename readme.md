@@ -73,7 +73,7 @@ Créer deux APIs Node.js simulant deux parcs différents du Jurassic Park avec :
 
 ##  Stack technique
 
-- **Backend : Node.js (Express)
+- **Backend : Node.js (Sequelize)
 - **Base de données : MySQL
 - **Cache : Redis
 - **Conteneurisation : Docker + Docker Compose
