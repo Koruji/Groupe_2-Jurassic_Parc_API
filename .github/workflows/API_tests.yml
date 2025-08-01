@@ -23,16 +23,22 @@ jobs:
         run: |
           echo "Waiting for mysql1 to be healthy..."
           for i in {1..30}; do
-            docker compose exec mysql1 mysqladmin ping -h localhost -u root -ppassword --silent && break
+            container_id=$(docker ps -qf "name=mysql1")
+            if [ -n "$container_id" ]; then
+              docker exec "$container_id" mysqladmin ping -h localhost -u root -ppassword --silent && break
+            fi
             echo "Retrying..."
             sleep 2
           done
 
+      - name: Wait for both databases
+        run: make wait-databases
+
       - name: Run tests inside API_parc1
-        run: docker compose exec api1 npm test
+        run: make test-api1
       
       - name: Run tests inside API_parc2
-        run: docker compose exec api2 npm test
+        run: make test-api2
 
       - name: Shutdown containers
-        run: docker compose down
+        run: make down
