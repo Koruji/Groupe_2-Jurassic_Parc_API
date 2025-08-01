@@ -16,14 +16,11 @@ Bienvenue dans le dépôt officiel du projet Jurassic Parc développé par le Gr
 
 ##  URLs
 
-GitHub Project     [Lien vers le GitHub Project](https://github.com/Koruji/Groupe_2Jurassic_Parc_API)  
-Production         [Lien Render API Parc 1](https://parc1-jurassic.render.com)  
-                   [Lien Render API Parc 2](https://parc2-jurassic.render.com)  
-Staging (pré-prod) [Lien Render Staging](https://staging-jurassic.render.com)  
+GitHub Project     [Lien vers le GitHub Project](https://github.com/Koruji/Groupe_2-Jurassic_Parc_API)  
 
----
 
-## 🚀 Installation & Lancement local
+
+##  Installation & Lancement local
 
 ### Prérequis
 - **Docker Desktop** installé et lancé sur votre machine (Windows/Mac/Linux)
