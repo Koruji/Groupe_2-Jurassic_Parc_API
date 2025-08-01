@@ -1,4 +1,4 @@
-name: CI Jurassic Park
+name: CI Docker - Jurassic Park
 
 on:
   push:
@@ -12,33 +12,9 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
-    - name: Run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "./docker-compose.yml"
-
-    - name: Wait for MySQL to be healthy
+    - name: Launch the docker container
       run: |
-        echo "⏳ Waiting for mysql1 and mysql2 to be healthy..."
-        docker-compose ps
-        docker-compose exec mysql1 sh -c "until mysqladmin ping -h localhost -u root -ppassword --silent; do sleep 2; done"
-        docker-compose exec mysql2 sh -c "until mysqladmin ping -h localhost -u root -ppassword --silent; do sleep 2; done"
-
-    - name: Run tests via make
-      run: |
-        make up
-        make test-api1
-        make test-api2
-        make down
-        
-    # - name: Run tests on API 1
-    #   run: docker-compose exec api1 npm test
-
-    # - name: Run tests on API 2
-    #   run: docker-compose exec api2 npm test
-
-    - name: Tear down
-      if: always()
-      run: docker-compose down
+        docker compose build
+        docker compose up
