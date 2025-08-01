@@ -18,3 +18,12 @@ jobs:
       run: |
         docker compose build
         docker compose up
+
+    # - name: Wait for API1 to be up
+    #   run: until curl -s http://localhost:3001/health; do echo "Waiting for api1..."; sleep 2; done
+    
+    # - name: Wait for API2 to be up
+    #   run: until curl -s http://localhost:3002/health; do echo "Waiting for api2..."; sleep 2; done
+
+    - name: Down docker container
+      run: docker compose down
