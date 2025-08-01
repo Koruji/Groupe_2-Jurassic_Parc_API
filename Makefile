@@ -39,3 +39,4 @@ wait-mysql2:
 	done
 
 wait-databases: wait-mysql1 wait-mysql2
+
