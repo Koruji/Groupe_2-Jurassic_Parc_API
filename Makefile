@@ -2,7 +2,7 @@ up:
 	docker-compose up --build
 
 down:
-	docker-compose down
+	docker compose down
 
 sh-api1:
 	docker-compose exec api1 sh

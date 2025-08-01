@@ -19,18 +19,6 @@ jobs:
           docker compose build
           docker compose up -d
 
-      - name: Wait for MySQL to be ready
-        run: |
-          echo "Waiting for mysql1 to be healthy..."
-          for i in {1..30}; do
-            container_id=$(docker ps -qf "name=mysql1")
-            if [ -n "$container_id" ]; then
-              docker exec "$container_id" mysqladmin ping -h localhost -u root -ppassword --silent && break
-            fi
-            echo "Retrying..."
-            sleep 2
-          done
-
       - name: Wait for both databases
         run: make wait-databases
 
