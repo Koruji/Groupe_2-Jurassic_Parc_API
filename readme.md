@@ -82,6 +82,7 @@ Créer deux APIs Node.js simulant deux parcs différents du Jurassic Park avec :
 
 
 ##  Structure du dépôt
+```
 github_workflows/
 ├── API_tests.yml
 └── API-image.yml
@@ -112,6 +113,7 @@ API_Parc2/
 
 readme.md
 Makefile
+```
 
 
 
