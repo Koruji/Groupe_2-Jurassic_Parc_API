@@ -16,7 +16,7 @@ Bienvenue dans le dépôt officiel du projet Jurassic Parc développé par le Gr
 
 ##  URLs
 
-GitHub Project     [Lien vers le GitHub Project](https://github.com/Koruji/Groupe_2-Jurassic_Parc_API)  
+GitHub Project     [Lien vers le GitHub Project](https://github.com/users/Koruji/projects/3)  
 
 
 
