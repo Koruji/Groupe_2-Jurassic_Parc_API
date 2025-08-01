@@ -74,33 +74,14 @@ Créer deux APIs Node.js simulant deux parcs différents du Jurassic Park avec :
 ##  Stack technique
 
 - **Backend : Node.js (Express)
-- **Base de données : PostgreSQL
+- **Base de données : MySQL
 - **Cache : Redis
 - **Conteneurisation : Docker + Docker Compose
 - **CI/CD : GitHub Actions
-- **Déploiement : Render
+- **Déploiement : Render (non fonctionnel)
 
 
 ##  Structure du dépôt
+<img width="98" height="272" alt="image" src="https://github.com/user-attachments/assets/aefd02a8-dab2-422d-a598-55f4499ef6e0" />
 
-```bash
-.
-├── docker-compose.yml
-├── .github/
-│   └── workflows/
-│       ├── api-parc1.yml
-│       └── api-parc2.yml
-├── API_Parc1/
-│   ├── src/
-│   ├── ops/
-│   │   ├── Dockerfile
-│   │   ├── docker-compose.yml
-│   │   └── github-workflows/
-│   └── package.json
-├── API_Parc2/
-│   ├── src/
-│   ├── ops/
-│   │   ├── Dockerfile
-│   │   ├── docker-compose.yml
-│   │   └── github-workflows/
-│   └── package.json
+
