@@ -29,10 +29,10 @@ jobs:
           done
 
       - name: Run tests inside API_parc1
-        run: make test-api1
+        run: docker-compose exec api1 npm test
       
       - name: Run tests inside API_parc2
-        run: make test-api2
+        run: docker-compose exec api2 npm test
 
       - name: Shutdown containers
         run: docker compose down
