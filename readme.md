@@ -82,6 +82,36 @@ Créer deux APIs Node.js simulant deux parcs différents du Jurassic Park avec :
 
 
 ##  Structure du dépôt
-<img width="98" height="272" alt="image" src="https://github.com/user-attachments/assets/aefd02a8-dab2-422d-a598-55f4499ef6e0" />
+github_workflows/
+├── API_tests.yml
+└── API-image.yml
+
+API_Parc1/
+├── node_modules/
+├── src/
+├── test/
+├── .dockerignore
+├── .env
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── package-lock.json
+└── package.json
+
+API_Parc2/
+├── node_modules/
+├── src/
+├── test/
+├── .dockerignore
+├── .env
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── package-lock.json
+└── package.json
+
+readme.md
+Makefile
+
 
 
