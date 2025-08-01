@@ -1,0 +1,39 @@
+name: Run API Tests
+
+on:
+  push:
+    branches: [ "master"]
+  pull_request:
+    branches: [ "master"]
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v2
+
+      - name: Start containers
+        run: docker compose up --build -d
+
+      - name: 💤 Wait for MySQL to be ready
+        run: |
+          echo "Waiting for mysql1 to be healthy..."
+          for i in {1..30}; do
+            docker compose exec mysql1 mysqladmin ping -h localhost -u root -ppassword --silent && break
+            echo "Retrying..."
+            sleep 2
+          done
+
+      - name: Run tests inside API_parc1
+        run: make test-api1
+      
+      - name: Run tests inside API_parc2
+        run: make test-api2
+
+      - name: Shutdown containers
+        run: docker compose down
