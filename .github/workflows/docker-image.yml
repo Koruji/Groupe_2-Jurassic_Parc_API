@@ -14,8 +14,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Docker Compose
-      run: docker-compose up --build
+    - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker-compose.yml"
 
     - name: Wait for MySQL to be healthy
       run: |
@@ -30,7 +32,7 @@ jobs:
         make test-api1
         make test-api2
         make down
-
+        
     # - name: Run tests on API 1
     #   run: docker-compose exec api1 npm test
 
