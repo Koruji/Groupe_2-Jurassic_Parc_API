@@ -4,10 +4,6 @@ const app = require('../../src/app');
 const { Gardien } = require('../../src/models');
 
 describe('Gardien API integration tests', () => {
-  beforeAll(async () => {
-    await sequelize.sync({ force: true });
-  });
-
   afterAll(async () => {
     await sequelize.close();
   });
