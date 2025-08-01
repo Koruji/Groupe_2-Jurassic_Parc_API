@@ -16,11 +16,51 @@ Bienvenue dans le dépôt officiel du projet Jurassic Parc développé par le Gr
 
 ##  URLs
 
+GitHub Project     [Lien vers le GitHub Project](https://github.com/Koruji/Groupe_2Jurassic_Parc_API)  
+Production         [Lien Render API Parc 1](https://parc1-jurassic.render.com)  
+                   [Lien Render API Parc 2](https://parc2-jurassic.render.com)  
+Staging (pré-prod) [Lien Render Staging](https://staging-jurassic.render.com)  
 
- GitHub Project     [Lien vers le GitHub Project](https://github.com/Koruji/Groupe_2Jurassic_Parc_API)       
- Production         [Lien Render API Parc 1](https://parc1-jurassic.render.com) 
-                   [Lien Render API Parc 2](https://parc2-jurassic.render.com) 
- Staging (pré-prod)| [Lien Render Staging](https://staging-jurassic.render.com)  
+---
+
+## 🚀 Installation & Lancement local
+
+### Prérequis
+- **Docker Desktop** installé et lancé sur votre machine (Windows/Mac/Linux)
+- **Make** installé (optionnel, mais recommandé pour simplifier les commandes)
+
+### Lancement rapide
+
+```bash
+# À la racine du projet
+make up
+```
+Cela va :
+- Builder et lancer les 2 APIs (API_Parc1 sur http://localhost:3001, API_Parc2 sur http://localhost:3002)
+- Démarrer 2 bases de données MySQL (pour chaque API)
+
+Pour arrêter tous les services :
+```bash
+make down
+```
+
+### Structure multi-API
+- `API_Parc1` : code source de la première API (Parc 1)
+- `API_Parc2` : code source de la deuxième API (Parc 2)
+- Chaque API a sa propre base de données et ses propres variables d'environnement (voir docker-compose.yml)
+
+### Ports exposés
+- API Parc 1 : http://localhost:3001
+- API Parc 2 : http://localhost:3002
+- MySQL Parc 1 : localhost:3307
+- MySQL Parc 2 : localhost:3308
+
+### Conseils
+- Assurez-vous que **Docker Desktop** est bien démarré avant toute commande.
+- Les fichiers `.env` dans chaque API permettent de surcharger la configuration si besoin.
+- Pour ajouter des dépendances, modifiez le `package.json` de l'API concernée puis relancez le build.
+
+---
 
 
 ##  Objectif du projet
